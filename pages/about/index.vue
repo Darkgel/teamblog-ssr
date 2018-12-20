@@ -1,5 +1,5 @@
 <template>
-    <div>最新文章列表页</div>
+    <div>关于我们</div>
 </template>
 
 <script>

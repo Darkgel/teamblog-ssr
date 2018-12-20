@@ -1,31 +1,8 @@
 <template>
-  <div class="layout">
-    <AppSidebar></AppSidebar>
-    <Layout :style="{marginLeft: '200px'}">
-      <AppHeader></AppHeader>
-      <Content :style="{padding: '2% 16px 16px'}">
-          <Card>
-            <div>
-              <nuxt/>
-            </div>
-          </Card>
-      </Content>
-    </Layout>
-    
+  <div>
+    <nuxt/>
   </div>
 </template>
-
-<script>
-import AppSidebar from '~/components/Sidebar.vue';
-import AppHeader from '~/components/Header.vue';
-export default {
-  components: {
-    AppSidebar,
-    AppHeader
-  }
-}
-</script>
-
 
 <style>
 html {
@@ -74,18 +51,5 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
-}
-
-/* add by darkgel*/
-.layout{
-    border: 1px solid #d7dde4;
-    background: #f5f7f9;
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-}
-.layout-header-bar{
-    background: #fff;
-    box-shadow: 0 1px 1px rgba(0,0,0,.1);
 }
 </style>

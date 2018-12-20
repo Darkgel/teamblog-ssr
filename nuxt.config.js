@@ -33,6 +33,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    {src: '~plugins/iview', ssr: true}
   ],
 
   /*
@@ -47,6 +48,30 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  router: {
+    extendRoutes(routes, resolve) {
+      // nuxt 的路由生成不符合 seo 要求，因此替换 nuxt 生成的
+      routes.forEach(item => {
+          switch(item.name) {
+              case 'article-detail':
+                item.path = '/a/:id.html';
+                break;
+              case 'article-archive':
+                item.path = '/archive.html';
+                break;
+              case 'article-archive-year':
+                item.path = '/archive/y-:year(d{4}).html';
+                break;
+              case 'about':
+                item.path = '/about.html';
+                break;
+              default:
+                  item = item;
+          }
+      })
+    }
   },
 
   /*
