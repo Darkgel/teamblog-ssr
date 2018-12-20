@@ -4,11 +4,11 @@
     <Layout :style="{marginLeft: '200px'}">
       <AppHeader></AppHeader>
       <Content :style="{padding: '2% 16px 16px'}">
-          <Card>
-            <div>
+          <!-- <Card>
+            <div> -->
               <nuxt/>
-            </div>
-          </Card>
+            <!-- </div>
+          </Card> -->
       </Content>
     </Layout>
     
@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import AppSidebar from '~/components/Sidebar.vue';
-import AppHeader from '~/components/Header.vue';
+import AppSidebar from '~/components/common/Sidebar.vue';
+import AppHeader from '~/components/common/Header.vue';
 export default {
   components: {
     AppSidebar,
