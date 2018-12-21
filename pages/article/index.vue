@@ -5,7 +5,9 @@
       <template v-for="(item) in articleList">
         <ListItem :articleItem="item" :key="item.id"></ListItem>
       </template>
-      <Page :total="pagination.total" :current="pagination.currentPage" :page-size="pagination.perPage" show-total show-elevator @on-change="changePage"/>
+      <div style="text-align: center;margin-top: 1%;margin-bottom: 3%">
+        <Page :total="pagination.total" :current="pagination.currentPage" :page-size="pagination.perPage" show-total show-elevator @on-change="changePage"/>
+      </div>
     </div>
 </template>
 
@@ -128,7 +130,7 @@ export default {
       }
     ];
 
-    let currentPage = context.params.page || 1;
+    let currentPage = parseInt(context.params.page) || 1;
     let total = 100;
     let perPage = 3;
     let totlaPages = 34;

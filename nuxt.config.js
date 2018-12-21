@@ -81,7 +81,7 @@ module.exports = {
       });
       routes.push({
         name: 'articleArchivePages',
-        path: '/archive/con-y:year(d{4})-p:page(\\d+).html',
+        path: '/archive/con-y:year(\\d{4})-p:page(\\d+).html',
         component: resolve(__dirname, 'pages/article/archive/index.vue')
       });
     }

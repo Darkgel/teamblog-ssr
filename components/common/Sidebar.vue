@@ -19,7 +19,7 @@
             </MenuItem>
             <MenuItem name="2">
               <nuxt-link to="/archive.html">
-                <Icon type="md-chatbubbles" />文章归档
+                <Icon type="md-archive" />文章归档
               </nuxt-link>
             </MenuItem>
             <MenuItem name="3">
