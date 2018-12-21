@@ -11,7 +11,7 @@
       <Divider dashed />
       <div style="margin-bottom: 5%">
         <span v-for="(tag) in article.tags" :key="tag.id">
-          <nuxt-link to="/">{{tag.name}}</nuxt-link>&nbsp;&#124;
+          <nuxt-link :to="{name: 'articleTagPages', params: {tagId: tag.id, page: 1}}">{{tag.name}}</nuxt-link>&nbsp;&#124;
         </span>
         &spades;
       </div>

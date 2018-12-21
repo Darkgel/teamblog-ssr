@@ -84,6 +84,11 @@ module.exports = {
         path: '/archive/con-y:year(\\d{4})-p:page(\\d+).html',
         component: resolve(__dirname, 'pages/article/archive/index.vue')
       });
+      routes.push({
+        name: 'articleTagPages',
+        path: '/tag/:tagId(\\d+)/con-p:page(\\d+).html',
+        component: resolve(__dirname, 'pages/article/tag/index.vue')
+      });
     }
   },
 

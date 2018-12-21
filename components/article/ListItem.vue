@@ -12,7 +12,7 @@
                 <p>{{articleItem.summary}}</p>
                 <Divider orientation="left">
                   <span v-for="(tag) in articleItem.tags" :key="tag.id">
-                    <nuxt-link to="/">{{tag.name}}</nuxt-link>&nbsp;&#124;
+                    <nuxt-link :to="{name: 'articleTagPages', params: {tagId: tag.id, page: 1}}">{{tag.name}}</nuxt-link>&nbsp;&#124;
                   </span>
                   &spades;
                 </Divider>
