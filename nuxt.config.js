@@ -33,7 +33,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    {src: '~plugins/iview', ssr: true}
+    {src: '~plugins/iview.js', ssr: true},
+    {src: '~plugins/filters.js'}
   ],
 
   /*
@@ -55,22 +56,34 @@ module.exports = {
       // nuxt 的路由生成不符合 seo 要求，因此替换 nuxt 生成的
       routes.forEach(item => {
           switch(item.name) {
-              case 'article-detail':
-                item.path = '/a/:id.html';
-                break;
-              case 'article-archive':
-                item.path = '/archive.html';
-                break;
-              case 'article-archive-year':
-                item.path = '/archive/y-:year(d{4}).html';
-                break;
-              case 'about':
-                item.path = '/about.html';
-                break;
-              default:
-                  item = item;
+            case 'article-detail':
+              item.path = '/a/:id(\\d+).html';
+              break;
+            case 'article-archive':
+              item.path = '/archive.html';
+              break;
+            case 'about':
+              item.path = '/about.html';
+              break;
+            default:
+                item = item;
           }
-      })
+      });
+      routes.push({
+        name: 'home',
+        path: '',
+        component: resolve(__dirname, 'pages/article/index.vue')
+      });
+      routes.push({
+        name: 'articleList',
+        path: '/articles/con-p:page(\\d+).html',
+        component: resolve(__dirname, 'pages/article/index.vue')
+      });
+      routes.push({
+        name: 'articleArchivePages',
+        path: '/archive/con-y:year(d{4})-p:page(\\d+).html',
+        component: resolve(__dirname, 'pages/article/archive/index.vue')
+      });
     }
   },
 
