@@ -3,7 +3,7 @@
       <h1>文章列表页</h1><br/>
       <hr/>
       <template v-for="(item) in articleList">
-        <ListItem :articleItem="item" :key="item.id"></ListItem>
+        <ListItem :article-item="item" :key="item.id"></ListItem>
       </template>
       <div style="text-align: center;margin-top: 1%;margin-bottom: 3%">
         <Page :total="pagination.total" :current="pagination.currentPage" :page-size="pagination.perPage" show-total show-elevator @on-change="changePage"/>
