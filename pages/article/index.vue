@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1>文章列表页</h1><br/>
+      <h1>最新文章列表页</h1><br/>
       <hr/>
       <template v-for="(item) in articleList">
         <ListItem :article-item="item" :key="item.id"></ListItem>
