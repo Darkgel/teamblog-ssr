@@ -1,5 +1,5 @@
 // 本地开发
-let API_BASE = process.env.API_DOMAIN || 'http://service.anlan380.net'
+let API_BASE = process.env.API_DOMAIN || 'http://api.teamblog.me'
 
 module.exports = {
     ACCEPT: 'application/vnd.myapp.v1+json', // 指明接口版本信息+数据格式
@@ -8,12 +8,12 @@ module.exports = {
         url: `${API_BASE}/oauth/token`,
         params: {
             grant_type: 'client_credentials',
-            client_id: '6',
-            client_secret: '048FkagxeHAIdtSJ4ajwJyRXUmBD5cLEyF9TgBZu'
+            client_id: '2',
+            client_secret: 'XH2TUq6OWobWrQ3mJceczHwOd3TmrataZpklBT44'
         }
     },
     REDIS: {
-        host: '10.1.2.104',
+        host: '192.168.56.103',
         port: '6379',
         /*
             reference: https://redis.io/commands/set

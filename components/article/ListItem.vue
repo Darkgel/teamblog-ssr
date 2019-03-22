@@ -6,12 +6,12 @@
               <div style="font-size: small;color: grey;">
                 <span>{{articleItem.author}}</span>
                 <span>&nbsp;&bull;&nbsp;</span>
-                <span>{{articleItem.updateTime | dateFormat}}</span>
+                <span>{{articleItem.updatedAt | dateFormat}}</span>
               </div>
               <div style="margin:1% 0">
                 <p>{{articleItem.summary}}</p>
                 <Divider orientation="left">
-                  <span v-for="(tag) in articleItem.tags" :key="tag.id">
+                  <span v-for="(tag) in articleItem.tags.data" :key="tag.id">
                     <nuxt-link :to="{name: 'articleTagPages', params: {tagId: tag.id, page: 1}}">{{tag.name}}</nuxt-link>&nbsp;&#124;
                   </span>
                   &spades;

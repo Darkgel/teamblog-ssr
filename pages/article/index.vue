@@ -21,122 +21,14 @@ export default {
     };
   },
   async asyncData(context) {
-    let articleList = [
-      {
-        id: 1,
-        title: 'aritcle 1a',
-        author: 'darkgel',
-        updateTime: Date.now(),
-        summary: 'this is summary',
-        tags: [
-          {
-              id: 1,
-              name: '算法'
-          },
-          {
-              id: 2,
-              name: 'AI'
-          },
-          {
-              id: 3,
-              name: 'JAVA'
-          },
-          {
-              id: 4,
-              name: 'PHP'
-          }
-        ]
-      },
-      {
-        id: 2,
-        title: 'aritcle 2',
-        author: 'darkgel_q',
-        updateTime: Date.now(),
-        summary: 'this is summary',
-        tags: [
-          {
-              id: 1,
-              name: '算法'
-          },
-        ]
-      },
-      {
-        id: 3,
-        title: 'aritcle 3',
-        author: 'darkgel_q',
-        updateTime: Date.now(),
-        summary: 'this is summary',
-        tags: [
-          {
-              id: 1,
-              name: '算法'
-          },
-          {
-              id: 2,
-              name: 'AI'
-          }
-        ]
-      },
-      {
-        id: 4,
-        title: 'aritcle 4',
-        author: 'darkgel',
-        updateTime: Date.now(),
-        summary: 'this is summary',
-        tags: [
-          {
-              id: 3,
-              name: 'JAVA'
-          },
-          {
-              id: 4,
-              name: 'PHP'
-          }
-        ]
-      },
-      {
-        id: 5,
-        title: 'aritcle 5',
-        author: 'darkgel',
-        updateTime: Date.now(),
-        summary: 'this is summary',
-        tags: [
-          {
-              id: 2,
-              name: 'AI'
-          },
-          {
-              id: 3,
-              name: 'JAVA'
-          },
-          {
-              id: 4,
-              name: 'PHP'
-          }
-        ]
-      },
-      {
-        id: 6,
-        title: 'aritcle 6',
-        author: 'darkgel_q',
-        updateTime: Date.now(),
-        summary: 'this is summary',
-        tags: [
-          {
-              id: 4,
-              name: 'PHP'
-          }
-        ]
-      }
-    ];
-
-    let currentPage = parseInt(context.params.page) || 1;
-    let total = 100;
-    let perPage = 3;
-    let totlaPages = 34;
-    let tmp = (currentPage % 2);
-    let data = articleList.splice(tmp * 3 , tmp *3 + 3);
-    let count = data.length;
+    let currentPage = parseInt(context.params.page) || 1
+    let perPage = 10
+    let params = '?pageNum='+currentPage+'&pageSize='+perPage+'&include=tags'
+    let { data: articlesResp } = await context.$axios.get(`/api/blog/articles${params}`)
+    let total = articlesResp.content.meta.pagination.total
+    let totlaPages = articlesResp.content.meta.pagination.total_pages
+    let articles = articlesResp.content.data
+    let count = articlesResp.content.meta.pagination.count;
 
     return {
       pagination: {
@@ -146,7 +38,7 @@ export default {
         currentPage: currentPage,
         totlaPages: totlaPages
       },
-      articleList: data
+      articleList: articles
     }
   },
   methods: {
