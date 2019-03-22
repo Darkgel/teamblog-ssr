@@ -4,7 +4,9 @@
       <div style="font-size: small;color: grey;">
         <span>{{ article.author }}</span>
         <span>&nbsp;&bull;&nbsp;</span>
-        <span>{{ article.updatedAt | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+        <span>创建时间 {{ article.createdAt | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+        <span>&nbsp;&bull;&nbsp;</span>
+        <span>创建时间 {{ article.updatedAt | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
       </div>
       <Divider />
       <div style="text-align: left" v-html="article.contentHtml"></div>

@@ -6,7 +6,9 @@
               <div style="font-size: small;color: grey;">
                 <span>{{articleItem.author}}</span>
                 <span>&nbsp;&bull;&nbsp;</span>
-                <span>{{articleItem.updatedAt | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+                <span>创建时间 {{articleItem.createdAt | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+                <span>&nbsp;&bull;&nbsp;</span>
+                <span>更新时间 {{articleItem.updatedAt | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
               </div>
               <div style="margin:1% 0">
                 <p>{{articleItem.summary}}</p>

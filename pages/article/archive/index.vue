@@ -1,6 +1,9 @@
 <template>
     <div>
       <Menu ref="yearMenu" mode="horizontal" theme="light" :active-name="year+''">
+        <MenuItem name="2019">
+          <nuxt-link :to="{name: 'articleArchivePages', params: {year: 2019, page: 1}}">2019</nuxt-link>
+        </MenuItem>
         <MenuItem name="2018">
           <nuxt-link :to="{name: 'articleArchivePages', params: {year: 2018, page: 1}}">2018</nuxt-link>
         </MenuItem>
@@ -39,19 +42,16 @@ export default {
       }
     },
   async asyncData(context) {
-    let {data: articlesResp} = await context.$axios.get(`/api/blog/articles`)
-    console.log(articlesResp)
+    let currentPage = parseInt(context.params.page) || 1
+    let perPage = 10
+    let params = '?pageNum='+currentPage+'&pageSize='+perPage+'&include=tags'
+    let year = context.params.year || new Date().getFullYear()
 
-    let year = (context.params.year || new Date().getFullYear()) + '';
-    let articleList = aritcleByYear[year]
-
-    let currentPage = parseInt(context.params.page) || 1;
-    let total = 100;
-    let perPage = 3;
-    let totlaPages = 34;
-    let tmp = (currentPage % 2);
-    let data = articleList.splice(tmp * 3 , tmp *3 + 3);
-    let count = data.length;
+    let {data: articlesResp} = await context.$axios.get(`/api/blog/articles/archive/${year}/${params}`)
+    let total = articlesResp.content.meta.pagination.total
+    let totlaPages = articlesResp.content.meta.pagination.total_pages
+    let articles = articlesResp.content.data
+    let count = articlesResp.content.meta.pagination.count
 
     return {
       pagination: {
@@ -61,7 +61,7 @@ export default {
         currentPage: currentPage,
         totlaPages: totlaPages
       },
-      articleList: data
+      articleList: articles
     }
   },
   methods: {

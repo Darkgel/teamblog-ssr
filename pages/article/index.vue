@@ -28,7 +28,7 @@ export default {
     let total = articlesResp.content.meta.pagination.total
     let totlaPages = articlesResp.content.meta.pagination.total_pages
     let articles = articlesResp.content.data
-    let count = articlesResp.content.meta.pagination.count;
+    let count = articlesResp.content.meta.pagination.count
 
     return {
       pagination: {
