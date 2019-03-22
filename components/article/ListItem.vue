@@ -6,7 +6,7 @@
               <div style="font-size: small;color: grey;">
                 <span>{{articleItem.author}}</span>
                 <span>&nbsp;&bull;&nbsp;</span>
-                <span>{{articleItem.updatedAt | dateFormat}}</span>
+                <span>{{articleItem.updatedAt | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
               </div>
               <div style="margin:1% 0">
                 <p>{{articleItem.summary}}</p>
@@ -21,12 +21,12 @@
         </div>
 </template>
 <script>
-import dateFormat from '~/plugins/filters/dateFormat.js';
+import parseTime from '~/plugins/filters/parseTime.js'
 
 export default {
     props: ['articleItem'],
     filters: {
-      dateFormat
+      parseTime
     }
 }
 </script>
